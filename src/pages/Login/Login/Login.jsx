@@ -18,17 +18,13 @@ const Login = () => {
                     <Form.Control type="password" name="password" required placeholder="Password" />
                 </Form.Group>
 
-                <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                    <Form.Check type="checkbox" label="Check me out" />
-                </Form.Group>
-
                 <Button variant="primary" type="submit">
                     Login
                 </Button>
 
                 <br />
 
-                <Form.Text className="text-danger">
+                <Form.Text className="text-secondary">
                     Don't Have an Account? <Link to="/register">Register</Link>
                 </Form.Text>
 

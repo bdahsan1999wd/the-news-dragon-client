@@ -1,21 +1,39 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Button, Container, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../providers/AuthProvider';
 
 
 const Register = () => {
+
+    const { createUser } = useContext(AuthContext);
+
+    const handleRegister = event => {
+        event.preventDefault();
+
+        const form = event.target;
+        const name = form.name.value;
+        const photo = form.photo.value;
+        const email = form.email.value;
+        const password = form.password.value;
+
+        console.log(name, photo, email, password);
+
+
+    }
+
     return (
         <Container className='w-50 mx-auto'>
             <h3>Please Register...</h3>
-            <Form>
+            <Form onSubmit={handleRegister}>
 
                 <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Label>Email address</Form.Label>
-                    <Form.Control type="text" name="name" required placeholder="Enter Your Name" />
+                    <Form.Label>Enter Your Name</Form.Label>
+                    <Form.Control type="text" name="name" required placeholder="Your Name" />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Photo URL</Form.Label>
-                    <Form.Control type="text" name="photo" required placeholder="Chose a Photo" />
+                    <Form.Control type="text" name="photo" placeholder="Chose a Photo" />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
@@ -37,7 +55,7 @@ const Register = () => {
 
                 <br />
 
-                <Form.Text className="text-danger">
+                <Form.Text className="text-secondary">
                     Already Have an Account? <Link to="/login">Login</Link>
                 </Form.Text>
 
